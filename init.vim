@@ -66,8 +66,6 @@ end
 
 ---------- Autocompletion ------------------------------
 
-
-
 -- Setup our autocompletion. These configuration options are the default ones
 -- copied out of the documentation.
 require "compe".setup {
@@ -139,6 +137,7 @@ vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 vim.api.nvim_set_keymap('i', '<cr>', 'compe#confirm("<cr>")', { expr = true })
 vim.api.nvim_set_keymap('i', '<c-space>', 'compe#complete()', { expr = true })
 
+
 ------ Elixir-LS LSP Setup and Configuration
 
 -- Neovim doesn't support snippets out of the box, so we need to mutate the
@@ -208,54 +207,4 @@ set nowritebackup
 
 
 autocmd BufEnter * :syntax sync fromstart
-
-
-" ========================================================
-" Nvim  Defaults
-
-" Syntax highlighting is enabled by default
-" filetype plugin indent on" is enabled by default
-
-" 'autoindent' is enabled
-" 'autoread' is enabled
-" 'background' defaults to "dark" (unless set automatically by the terminal/UI)
-" 'backspace' defaults to "indent,eol,start"
-" 'backupdir' defaults to .,~/.local/share/nvim/backup (|xdg|)
-" 'belloff' defaults to "all"
-" 'compatible' is always disabled
-" 'complete' excludes "i"
-" 'cscopeverbose' is enabled
-" 'directory' defaults to ~/.local/share/nvim/swap// (|xdg|), auto-created
-" 'display' defaults to "lastline,msgsep"
-" 'encoding' is UTF-8 (cf. 'fileencoding' for file-content encoding)
-" 'fillchars' defaults (in effect) to "vert:│,fold:·,sep:│"
-" 'formatoptions' defaults to "tcqj"
-" 'fsync' is disabled
-" 'history' defaults to 10000 (the maximum)
-" 'hlsearch' is enabled
-" 'incsearch' is enabled
-" 'langnoremap' is enabled
-" 'langremap' is disabled
-" 'laststatus' defaults to 2 (statusline is always shown)
-" 'listchars' defaults to "tab:> ,trail:-,nbsp:+"
-" 'nrformats' defaults to "bin,hex"
-" 'ruler' is enabled
-" 'sessionoptions' includes "unix,slash", excludes "options"
-" 'shortmess' includes "F", excludes "S"
-" 'showcmd' is enabled
-" 'sidescroll' defaults to 1
-" 'smarttab' is enabled
-" 'startofline' is disabled
-" 'tabpagemax' defaults to 50
-" 'tags' defaults to "./tags;,tags"
-" 'ttimeoutlen' defaults to 50
-" 'ttyfast' is always set
-" 'viewoptions' includes "unix,slash"
-" 'undodir' defaults to ~/.local/share/nvim/undo (|xdg|), auto-created
-" 'viminfo' includes "!"
-" 'wildmenu' is enabled
-" 'wildoptions' defaults to "pum,tagfile"
-
-" |man.vim| plugin is enabled, so |:Man| is available by default.
-" |matchit| plugin is enabled. To disable it in your config:
 
