@@ -15,12 +15,11 @@ Plug '/opt/homebrew/opt/fzf'
 call plug#end()
 
 " ========================================================
-" Elixir-LS language server setup
+" Neovim LSP Setup
 " ========================================================
 
 " Followed the directions from this blog post:
 " https://www.mitchellhanberg.com/how-to-set-up-neovim-for-elixir-development/
-
 
 lua << EOF
 local lspconfig = require("lspconfig")
@@ -64,6 +63,7 @@ local on_attach = function(_, bufnr)
   local function map(...)
     vim.api.nvim_buf_set_keymap(bufnr, ...)
   end
+
   local map_opts = {noremap = true, silent = true}
 
   map("n", "df", "<cmd>lua vim.lsp.buf.formatting()<cr>", map_opts)
@@ -93,7 +93,7 @@ local on_attach = function(_, bufnr)
   vim.cmd [[inoremap <silent><expr> <C-d> compe#scroll({ 'delta': -4 })]]
 end
 
-lspconfig.elixirls.setup({
+require'lspconfig'.elixirls.setup{
   cmd = { "/Users/leo/lsp/elixir-ls/rel/language_server.sh" },
   capabilities = capabilities,
   on_attach = on_attach,
@@ -109,7 +109,7 @@ lspconfig.elixirls.setup({
       fetchDeps = false
     }
   }
-})
+}
 EOF
 
 
