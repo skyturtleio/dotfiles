@@ -2,15 +2,27 @@
 " vim-plug
 " ========================================================
 call plug#begin()
+
+" colorscheme
 Plug 'agude/vim-eldar'
+
+" Elixir filetype support
 Plug 'elixir-editors/vim-elixir'
+
+" From the documentation on nvim-lspconfig
 Plug 'hrsh7th/nvim-compe'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
+
+" Fuzzy finding
 Plug 'junegunn/fzf.vim'
+
+
 Plug 'neovim/nvim-lspconfig'
 Plug 'preservim/nerdtree'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'wlangstroth/vim-racket'
 Plug '/opt/homebrew/opt/fzf'
 call plug#end()
 
@@ -166,6 +178,11 @@ require'lspconfig'.elixirls.setup{
     }
   }
 }
+
+require'lspconfig'.racket_langserver.setup{
+  on_attach = on_attach,
+  filetypes = { "racket", "scheme" }
+}
 EOF
 
 
@@ -189,15 +206,32 @@ set scrolloff=3
 set shiftwidth=2			    " how far it will indent when using >>
 set showtabline=2			    " Always show tab bar at the top
 set softtabstop=2
-set showmatch				      " hightlight the matching bracket under cursor
+set showmatch				      " Highlight the matching bracket under cursor
 set tabstop=2				
 set termguicolors
+set hidden                " Switch buffers even if file is not saved
 set mouse=nv
 
 let mapleader=","
-nnoremap <silent> <Leader>fa :FZF<CR>
-nnoremap <silent> <Leader>ff :GFiles<CR>
-nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <space>c :clo<CR>
+nnoremap <Leader>bp :bprevious<CR>
+nnoremap <space>nh :noh<CR>
+
+" FZF
+nnoremap <Leader>ff :FZF<CR>
+nnoremap <Leader>fg :GFiles<CR>
+nnoremap <Leader>fb :Buffers<CR>
+nnoremap <Leader>fb :Lines<CR>
+
+" vim-fugitive
+nnoremap <Leader>gac :Gwrite<CR>
+nnoremap <Leader>gaa :Git add -A<CR>
+nnoremap <Leader>gcc :Git commit<CR>
+nnoremap <Leader>gcm :Git commit -m<CR>
+
+" NERDTree - think `show` and `close`
+nnoremap <leader>ns :NERDTreeFocus<CR>
+nnoremap <leader>nc :NERDTreeToggle<CR>
 
 " === Backups ===========================================
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
@@ -207,4 +241,5 @@ set nowritebackup
 
 
 autocmd BufEnter * :syntax sync fromstart
+au BufReadPost *.rkt,*.rktl set filetype=racket
 
