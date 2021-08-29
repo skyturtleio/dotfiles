@@ -214,14 +214,22 @@ set mouse=nv
 
 let mapleader=","
 nnoremap <space>c :clo<CR>
+nnoremap <space>z <C-z>
 nnoremap <Leader>bp :bprevious<CR>
 nnoremap <space>nh :noh<CR>
+
+" Easier split navigations
+" source: https://thoughtbot.com/blog/vim-splits-move-faster-and-more-naturally
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 " FZF
 nnoremap <Leader>ff :FZF<CR>
 nnoremap <Leader>fg :GFiles<CR>
 nnoremap <Leader>fb :Buffers<CR>
-nnoremap <Leader>fb :Lines<CR>
+nnoremap <Leader>fl :Lines<CR>
 
 " vim-fugitive
 nnoremap <Leader>gac :Gwrite<CR>
@@ -230,8 +238,7 @@ nnoremap <Leader>gcc :Git commit<CR>
 nnoremap <Leader>gcm :Git commit -m<CR>
 
 " NERDTree - think `show` and `close`
-nnoremap <leader>ns :NERDTreeFocus<CR>
-nnoremap <leader>nc :NERDTreeToggle<CR>
+nnoremap <leader>nt :NERDTreeToggle<CR>
 
 " === Backups ===========================================
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
