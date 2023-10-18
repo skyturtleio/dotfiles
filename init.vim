@@ -7,7 +7,7 @@ call plug#begin()
 Plug 'agude/vim-eldar'
 
 " Elixir filetype support
-Plug 'elixir-editors/vim-elixir'
+"Plug 'elixir-editors/vim-elixir'
 
 " From the documentation on nvim-lspconfig
 Plug 'hrsh7th/nvim-compe'
@@ -18,12 +18,12 @@ Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'junegunn/fzf.vim'
 
 
-Plug 'neovim/nvim-lspconfig'
-Plug 'preservim/nerdtree'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
-Plug 'wlangstroth/vim-racket'
-Plug '/opt/homebrew/opt/fzf'
+"Plug 'neovim/nvim-lspconfig'
+"Plug 'preservim/nerdtree'
+"Plug 'tpope/vim-fugitive'
+"Plug 'tpope/vim-surround'
+"Plug 'wlangstroth/vim-racket'
+"Plug '/opt/homebrew/opt/fzf'
 call plug#end()
 
 
@@ -59,11 +59,11 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+--  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+--  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+--  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
@@ -210,6 +210,7 @@ set showmatch				      " Highlight the matching bracket under cursor
 set tabstop=2				
 set termguicolors
 set hidden                " Switch buffers even if file is not saved
+set rnu
 set mouse=nv
 
 let mapleader=","
@@ -219,7 +220,8 @@ nnoremap <Leader>bp :bprevious<CR>
 nnoremap <space>nh :noh<CR>
 
 " Easier split navigations
-" source: https://thoughtbot.com/blog/vim-splits-move-faster-and-more-naturally
+" Source https://thoughtbot.com/blog/vim-splits-move-faster-and-more-naturally
+" Comment out lspconfig that conflicts with <C-K>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
@@ -239,6 +241,7 @@ nnoremap <Leader>gcm :Git commit -m<CR>
 
 " NERDTree - think `show` and `close`
 nnoremap <leader>nt :NERDTreeToggle<CR>
+let g:NERDTreeShowLineNumbers=1
 
 " === Backups ===========================================
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
